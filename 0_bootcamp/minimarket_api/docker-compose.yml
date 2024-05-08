@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  nest_api:
+    container_name: 'nest_api'
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    command: yarn start:dev
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+  mongo:
+    container_name: 'mongo'
+    image: mongo:4.4
+    restart: always
+    volumes:
+      - ./mongo-persistence:/data/db
+      # - /usr/src/app/database/database:/data/db
+    env_file:
+      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
