@@ -6,12 +6,14 @@
 
 import { Observable } from 'rxjs';
 import { Product } from './schema/product.schema';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 export interface ProductDatasource {
   // Verbo para comprar productos
-  // Se le pasa un id de producto y retorna un observable de productos
+  // Recibe un producto (DTO), del cual crea una instancia y retorna un observable de productos
   // Será verbo POST
-  comprarProductos(id: string): Observable<Product[]>;
+  comprarProductos(product: CreateProductDto): Observable<Product[]>;
   // Verbo para obtener productos
   // Retorna un observable de productos
   // Será verbo GET
@@ -21,7 +23,8 @@ export interface ProductDatasource {
   // Será verbo GET
   obtenerProducto(searchTerm: string): Observable<Product>;
   // Verbo para obtener un producto por id y luego venderlo
-  // Se le pasa un id de producto y retorna un observable de un producto
+  // Recibe un producto (DTO), del cual descrimina por codigo de barras
+  // y retorna un observable de productos
   // Será verbo PATCH y actualizará el stock del producto
-  venderProducto(id: string): Observable<Product>;
+  venderProducto(product: UpdateProductDto): Observable<Product>;
 }
