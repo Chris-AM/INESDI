@@ -10,6 +10,10 @@ export class Product {
   @Prop({ unique: true, default: v4 })
   id: string;
   @Prop({ required: true })
+  codeBar: string;
+  @Prop({ required: true })
+  provider: string; 
+  @Prop({ required: true })
   name: string;
   @Prop({ required: true })
   sellPrice: number;
