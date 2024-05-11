@@ -6,9 +6,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Product, ProductSchema } from './domain/schema/product.schema';
 import { ProductImage } from './domain/domain';
 import { PaginationMiddleware } from 'src/config/common/pagination/pagination.middleware';
+import { EnvironmentConfigModule } from '../../config/config.module';
 
 @Module({
   imports: [
+    EnvironmentConfigModule,
     MongooseModule.forFeatureAsync([
       // Import the Product schema and apply the mongoose-autopopulate plugin
       {
