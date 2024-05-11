@@ -18,6 +18,7 @@ async function minimarket() {
   const httpException = new HttpExceptionFilter(logger);
   const port = process.env.PORT || 3000;
 
+  app.setGlobalPrefix('v1/minimarket');
   app.enableCors();
   app.enableVersioning({
     defaultVersion: '1',
