@@ -4,28 +4,24 @@
 // Pero realmente se declaran las acciones que
 // puede realizar un usuario manipulando la app
 
-import { CreateProductDto } from './dto/create-product.dto';
-import { ProductDocument } from './domain';
+import { Observable } from 'rxjs';
+import { Product } from './schema/product.schema';
 
 export interface ProductDatasource {
   // Verbo para comprar productos
-  // Recibe un producto (DTO), del cual crea una instancia y retorna un Promise de productos
+  // Se le pasa un id de producto y retorna un observable de productos
   // Será verbo POST
-  comprarProductos(product: CreateProductDto): Promise<ProductDocument[]>;
+  comprarProductos(id: string): Observable<Product[]>;
   // Verbo para obtener productos
-  // Retorna un Promise de productos
+  // Retorna un observable de productos
   // Será verbo GET
-  obtenerProductos(): Promise<ProductDocument[]>;
+  obtenerProductos(): Observable<Product[]>;
   // Verbo para obtener un producto por algún criterio de búsqueda
-  // Se le pasa un término de búsqueda y retorna un Promise de un producto
+  // Se le pasa un término de búsqueda y retorna un observable de un producto
   // Será verbo GET
-  obtenerProducto(searchTerm: string): Promise<ProductDocument>;
+  obtenerProducto(searchTerm: string): Observable<Product>;
   // Verbo para obtener un producto por id y luego venderlo
-  // Recibe un producto (DTO), del cual descrimina por codigo de barras
-  // y retorna un Promise de productos
+  // Se le pasa un id de producto y retorna un observable de un producto
   // Será verbo PATCH y actualizará el stock del producto
-  venderProducto(
-    searchedCodeBar: string,
-    quantity: number,
-  ): Promise<ProductDocument>;
+  venderProducto(id: string): Observable<Product>;
 }
