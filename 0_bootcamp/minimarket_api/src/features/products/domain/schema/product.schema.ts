@@ -12,7 +12,7 @@ export class Product {
   @Prop({ required: true })
   codeBar: string;
   @Prop({ required: true })
-  provider: string; 
+  provider: string;
   @Prop({ required: true })
   name: string;
   @Prop({ required: true })
@@ -21,6 +21,8 @@ export class Product {
   buyPrice: number;
   @Prop({ required: true })
   stock: number;
+  @Prop({ required: true })
+  minStock: number;
   @Prop({ required: true })
   description: string;
   @Prop({ required: true })
