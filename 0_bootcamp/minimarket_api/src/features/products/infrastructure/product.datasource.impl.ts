@@ -1,5 +1,4 @@
 import { Model } from 'mongoose';
-import { Observable } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 //Own Imports
@@ -11,6 +10,7 @@ import {
   ProductImage,
   UpdateProductDto,
 } from '../domain/domain';
+import { LoggerService } from 'src/config/logger/logger.service';
 
 @Injectable()
 export class ProductDatasourceImpl implements ProductDatasource {
@@ -19,23 +19,72 @@ export class ProductDatasourceImpl implements ProductDatasource {
     private readonly productModel: Model<ProductDocument>,
     @InjectModel(ProductImage.name)
     private readonly productImageModel: Model<ProductImage>,
+    private readonly loggerService: LoggerService,
   ) {}
-  comprarProductos(product: CreateProductDto): Observable<Product[]> {
+
+  async comprarProductos(
+    product: CreateProductDto,
+  ): Promise<ProductDocument[]> {
     // Deconstruye el producto
-    const { codeBar, name, stock, buyPrice, minStock } = product;
-    // Revisar si el producto ya existe
-    const obtainedProduct = this.obtenerProducto(codeBar);
+    const { codeBar, stock } = product;
+    const productsToBuy: ProductDocument[] = [];
+    try {
+      // Buscar el producto por el código de barras
+      const obtainedProduct = await this.obtenerProducto(codeBar);
+      // Si el producto no existe, se crea
+      if (!obtainedProduct) {
+        const createdProduct = await this.createProduct(product);
+        productsToBuy.push(createdProduct);
+      } else {
+        // Si el producto existe, se actualiza el stock
+        obtainedProduct.stock += stock;
+        await obtainedProduct.save();
+        productsToBuy.push(obtainedProduct);
+      }
+      return productsToBuy;
+    } catch (error) {
+      this.loggerService.error(
+        error.message,
+        error.stack,
+        'ProductDatasourceImpl',
+      );
+    }
+  }
+  obtenerProductos(): Promise<ProductDocument[]> {
     throw new Error('Method not implemented.');
   }
-  obtenerProductos(): Observable<Product[]> {
-    throw new Error('Method not implemented.');
-  }
-  obtenerProducto(searchTerm: string): Observable<Product> {
+  async obtenerProducto(searchTerm: string): Promise<ProductDocument> {
     // Buscar el producto por el código de barras
-    const product = this.productModel.findOne({ codeBar: searchTerm });
+    try {
+      const product = await this.productModel.findOne({ codeBar: searchTerm });
+      this.loggerService.log('ProductDatasourceImpl', 'Product Obtained');
+      return product;
+    } catch (error) {
+      this.loggerService.error(
+        error.message,
+        error.stack,
+        'ProductDatasourceImpl',
+      );
+    }
+  }
+
+  venderProducto(product: UpdateProductDto): Promise<ProductDocument> {
     throw new Error('Method not implemented.');
   }
-  venderProducto(product: UpdateProductDto): Observable<Product> {
-    throw new Error('Method not implemented.');
+
+  private async createProduct(
+    product: CreateProductDto,
+  ): Promise<ProductDocument> {
+    try {
+      const createdProduct = await this.productModel.create(product);
+      this.loggerService.log('ProductDatasourceImpl', 'Product Created');
+      return createdProduct;
+    } catch (error) {
+      this.loggerService.error(
+        error.message,
+        error.stack,
+        'ProductDatasourceImpl',
+      );
+    }
   }
 }
