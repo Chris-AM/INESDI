@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 import { v4 } from 'uuid';
 import { ProductImage } from './product-image.schema';
 
-export type ProductDocumen = Product & Document;
+export type ProductDocument = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
