@@ -7,37 +7,37 @@ import { CreateProductDto, Product, UpdateProductDto } from '../domain/domain';
 @Injectable()
 export class ProductsService {
   constructor(private readonly datasource: ProductDatasourceImpl) {}
-
-  comprarProductos(createProductDto: CreateProductDto) {
-    return this.datasource.comprarProductos(createProductDto);
+  create(createProductDto: CreateProductDto) {
+    return 'This action adds a new product';
   }
 
-  obtenerProductos() {
-    return this.datasource.obtenerProductos();
+  findAll() {
+    return `This action returns all products`;
   }
 
-  obtenerProducto(searchTerm: string) {
-    return this.datasource.obtenerProducto(searchTerm);
+  findOne(id: number) {
+    return `This action returns a #${id} product`;
   }
 
-  async venderProducto(
-    searchedCodeBar: string,
-    quantity: number,
-  ) {
-    const newSell = await this.datasource.venderProducto(
-      searchedCodeBar,
-      quantity,
-    );
-    if (newSell.stock <= newSell.minStock) {
-      this.bajoStock(newSell);
-    }
-    console.log('🚀 products.service.venderProducto() ~ newSell', newSell);
-    return newSell;
+  update(id: number, updateProductDto: UpdateProductDto) {
+    return `This action updates a #${id} product`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} product`;
   }
 
   // Se crea flag privada que indica si un producto está llegando a un minimo de stock
-  private bajoStock(product: Product) {
-    const { codeBar, name, provider, minStock } = product;
-    return `El Producto${codeBar}: ${name} llegó a un stock mínimo ${minStock} y necesita ser reabastecido por el proveedor ${provider}`;
+  private bajoStock(product: Product): Observable<boolean> {
+    const { codeBar, minStock } = product;
+    const obtainedProduct = this.datasource.obtenerProducto(codeBar);
+    if (obtainedProduct) {
+      return obtainedProduct.pipe(
+        // Se mapea el producto obtenido y se retorna si el stock es menor o igual al minimo
+        map((product) => {
+          return product.stock <= minStock;
+        }),
+      );
+    }
   }
 }
