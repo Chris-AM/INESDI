@@ -3,10 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EnvironmentConfigModule } from './config/config.module';
 import { MinimarketModule } from './features/minimarket.module';
-import { SeedModule } from './seed/seed.module';
 
 @Module({
-  imports: [EnvironmentConfigModule, MinimarketModule, SeedModule],
+  imports: [EnvironmentConfigModule, MinimarketModule],
   controllers: [AppController],
   providers: [AppService],
 })
