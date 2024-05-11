@@ -1,9 +1,9 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { v4 } from 'uuid';
 import { ProductImage } from './product-image.schema';
 
-export type ProductSchema = Product & Document;
+export type ProductDocumen = Product & Document;
 
 @Schema({ timestamps: true })
 export class Product {
@@ -32,3 +32,10 @@ export class Product {
   @Prop({ ref: 'ProductImage' })
   images: ProductImage[];
 }
+
+export const ProductSchema = SchemaFactory.createForClass(Product);
+
+ProductSchema.method('toJSON', function () {
+  const { _id, ...object } = this.toObject();
+  return object;
+});
