@@ -7,8 +7,9 @@ import { CreateProductDto, Product, UpdateProductDto } from '../domain/domain';
 @Injectable()
 export class ProductsService {
   constructor(private readonly datasource: ProductDatasourceImpl) {}
+
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    return this.datasource.comprarProductos(createProductDto);
   }
 
   findAll() {
@@ -28,16 +29,9 @@ export class ProductsService {
   }
 
   // Se crea flag privada que indica si un producto está llegando a un minimo de stock
-  private bajoStock(product: Product): Observable<boolean> {
+  private bajoStock(product: Product){
     const { codeBar, minStock } = product;
     const obtainedProduct = this.datasource.obtenerProducto(codeBar);
-    if (obtainedProduct) {
-      return obtainedProduct.pipe(
-        // Se mapea el producto obtenido y se retorna si el stock es menor o igual al minimo
-        map((product) => {
-          return product.stock <= minStock;
-        }),
-      );
-    }
+    
   }
 }
