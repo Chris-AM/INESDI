@@ -9,4 +9,6 @@ export class ProductImage {
   url: string;
   @Prop({ required: true })
   alt: string;
+  @Prop({ required: true })
+  title: string;
 }
