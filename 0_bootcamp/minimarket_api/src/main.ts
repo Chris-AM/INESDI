@@ -6,7 +6,7 @@ import { LoggerInterceptor } from './config/logger/logger.interceptor';
 import { ResponseInterceptor } from './config/common/response/response.interceptor';
 import { HttpExceptionFilter } from './config/common/http-exception/http-exception.filter';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
-import { DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function minimarket() {
   const app = await NestFactory.create(AppModule);
@@ -34,11 +34,20 @@ async function minimarket() {
   app.useGlobalInterceptors(loggerInterceptor, responseInterceptor);
   app.useGlobalFilters(httpException);
 
+  // Swagger
   const appDocumntation = new DocumentBuilder()
     .setTitle('Minimarket API')
     .setDescription('API Documentation')
     .setVersion('1.0')
     .build();
+  const swaggerDocument = SwaggerModule.createDocument(app, appDocumntation);
+  SwaggerModule.setup('api/documentation', app, swaggerDocument, {
+    swaggerOptions: {
+      filter: true,
+      showRequestDuration: true,
+    },
+  });
+
   await app.listen(port);
   logger.log('🚀 BOOTCAMP', 'Application is running on port: ' + port);
 }
