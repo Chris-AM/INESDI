@@ -7,7 +7,7 @@ import {
   CreateProductDto,
   Product,
   ProductDatasource,
-  ProductDocumen,
+  ProductDocument,
   ProductImage,
   UpdateProductDto,
 } from '../domain/domain';
@@ -16,7 +16,7 @@ import {
 export class ProductDatasourceImpl implements ProductDatasource {
   constructor(
     @InjectModel(Product.name)
-    private readonly productModel: Model<ProductDocumen>,
+    private readonly productModel: Model<ProductDocument>,
     @InjectModel(ProductImage.name)
     private readonly productImageModel: Model<ProductImage>,
   ) {}
