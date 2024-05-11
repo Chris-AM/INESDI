@@ -3,5 +3,5 @@ export { CreateProductDto } from '../domain/dto/create-product.dto';
 export { UpdateProductDto } from '../domain/dto/update-product.dto';
 export {
   Product,
-  ProductDocument,
+  ProductDocumen,
 } from '../domain/schema/product.schema';
