@@ -24,13 +24,11 @@ export class Product {
   @Prop({ required: true })
   description: string;
   @Prop({ required: true })
-  image: string;
-  @Prop({ required: true })
   category: string;
   @Prop({ required: true })
   brand: string;
   @Prop({ required: true })
   discount: number;
-  @Prop({ required: true, ref: 'ProductImage' })
+  @Prop({ ref: 'ProductImage' })
   images: ProductImage[];
 }
