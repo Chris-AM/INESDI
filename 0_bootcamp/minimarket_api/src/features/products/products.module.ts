@@ -5,6 +5,7 @@ import { ProductDatasourceImpl } from './infrastructure/product.datasource.impl'
 import { MongooseModule } from '@nestjs/mongoose';
 import { Product, ProductSchema } from './domain/schema/product.schema';
 import { ProductImage } from './domain/domain';
+import { PaginationMiddleware } from 'src/config/common/pagination/pagination.middleware';
 
 @Module({
   imports: [
@@ -36,8 +37,8 @@ import { ProductImage } from './domain/domain';
 })
 export class ProductsModule {
   configure(consumer: MiddlewareConsumer){
-    // consumer
-    // .apply(PaginationMiddleware)
-    // .forRoutes({ path: 'v1/minimarket/products', method: RequestMethod.GET })
+    consumer
+    .apply(PaginationMiddleware)
+    .forRoutes({ path: 'v1/minimarket/products', method: RequestMethod.GET })
   }
 }
