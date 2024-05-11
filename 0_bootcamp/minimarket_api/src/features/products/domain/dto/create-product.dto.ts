@@ -4,7 +4,13 @@
 // estructura de los datos que se transfieren entre las capas de la aplicación.
 
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 // Se Utiliza en el contrato (Datasource) de la capa de dominio.
 export class CreateProductDto {
@@ -51,7 +57,18 @@ export class CreateProductDto {
     example: 10,
   })
   @IsNotEmpty()
+  @IsNumber()
+  @IsPositive()
   readonly stock: number;
+
+  @ApiProperty({
+    description: 'Stock mínimo del producto',
+    example: 5,
+  })
+  @IsNotEmpty()
+  @IsNumber()
+  @IsPositive()
+  readonly minStock: number;
 
   @ApiProperty({
     description: 'Descripción del producto',
