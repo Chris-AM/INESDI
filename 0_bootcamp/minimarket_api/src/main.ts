@@ -21,7 +21,6 @@ async function minimarket() {
   app.setGlobalPrefix('v1/minimarket');
   app.enableCors();
   app.enableVersioning({
-    defaultVersion: '1',
     type: VersioningType.URI,
   });
   app.useGlobalPipes(
