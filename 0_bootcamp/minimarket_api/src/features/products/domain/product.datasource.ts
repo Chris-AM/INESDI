@@ -5,7 +5,6 @@
 // puede realizar un usuario manipulando la app
 
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductDocument } from './domain';
 
 export interface ProductDatasource {
@@ -25,5 +24,8 @@ export interface ProductDatasource {
   // Recibe un producto (DTO), del cual descrimina por codigo de barras
   // y retorna un Promise de productos
   // Será verbo PATCH y actualizará el stock del producto
-  venderProducto(product: UpdateProductDto): Promise<ProductDocument>;
+  venderProducto(
+    searchedCodeBar: string,
+    quantity: number,
+  ): Promise<ProductDocument>;
 }

@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 //Own Imports
 import {
@@ -50,9 +50,13 @@ export class ProductDatasourceImpl implements ProductDatasource {
       );
     }
   }
-  obtenerProductos(): Promise<ProductDocument[]> {
-    throw new Error('Method not implemented.');
+
+  async obtenerProductos(): Promise<ProductDocument[]> {
+    const allProducts = await this.productModel.find();
+    this.loggerService.log('ProductDatasourceImpl', 'Products Obtained');
+    return allProducts;
   }
+
   async obtenerProducto(searchTerm: string): Promise<ProductDocument> {
     // Buscar el producto por el código de barras
     try {
@@ -68,8 +72,25 @@ export class ProductDatasourceImpl implements ProductDatasource {
     }
   }
 
-  venderProducto(product: UpdateProductDto): Promise<ProductDocument> {
-    throw new Error('Method not implemented.');
+  async venderProducto(
+    searchedCodeBar: string,
+    quantity: number,
+  ): Promise<ProductDocument> {
+    try {
+      const obtainedProduct = await this.obtenerProducto(searchedCodeBar);
+      if (!obtainedProduct) {
+        throw new NotFoundException('Product not found');
+      }
+      const newStockProduct = (obtainedProduct.stock -= quantity);
+      obtainedProduct.stock = newStockProduct;
+      return obtainedProduct.save();
+    } catch (error) {
+      this.loggerService.error(
+        error.message,
+        error.stack,
+        'ProductDatasourceImpl',
+      );
+    }
   }
 
   private async createProduct(
