@@ -8,30 +8,36 @@ import { CreateProductDto, Product, UpdateProductDto } from '../domain/domain';
 export class ProductsService {
   constructor(private readonly datasource: ProductDatasourceImpl) {}
 
-  create(createProductDto: CreateProductDto) {
+  comprarProductos(createProductDto: CreateProductDto) {
     return this.datasource.comprarProductos(createProductDto);
   }
 
-  findAll() {
-    return `This action returns all products`;
+  obtenerProductos() {
+    return this.datasource.obtenerProductos();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  obtenerProducto(searchTerm: string) {
+    return this.datasource.obtenerProducto(searchTerm);
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async venderProducto(
+    searchedCodeBar: string,
+    quantity: number,
+  ) {
+    const newSell = await this.datasource.venderProducto(
+      searchedCodeBar,
+      quantity,
+    );
+    if (newSell.stock <= newSell.minStock) {
+      this.bajoStock(newSell);
+    }
+    console.log('🚀 products.service.venderProducto() ~ newSell', newSell);
+    return newSell;
   }
 
   // Se crea flag privada que indica si un producto está llegando a un minimo de stock
-  private bajoStock(product: Product){
-    const { codeBar, minStock } = product;
-    const obtainedProduct = this.datasource.obtenerProducto(codeBar);
-    
+  private bajoStock(product: Product) {
+    const { codeBar, name, provider, minStock } = product;
+    return `El Producto${codeBar}: ${name} llegó a un stock mínimo ${minStock} y necesita ser reabastecido por el proveedor ${provider}`;
   }
 }
