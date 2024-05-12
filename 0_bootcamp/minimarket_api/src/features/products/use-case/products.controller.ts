@@ -15,28 +15,26 @@ import { UpdateProductDto } from '../domain/dto/update-product.dto';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  @Post('comprar-productos')
+  comprarProductos(@Body() createProductDto: CreateProductDto) {
+    return this.productsService.comprarProductos(createProductDto);
   }
 
-  @Get()
-  findAll() {
-    return this.productsService.findAll();
+  @Get('buscar-productos')
+  obtenerProductos() {
+    return this.productsService.obtenerProductos();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+  @Get('buscar-producto-por/:searchTerm')
+  obtenerProducto(@Param('searchTerm') searchTerm: string) {
+    return this.productsService.obtenerProducto(searchTerm);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(+id, updateProductDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productsService.remove(+id);
+  @Patch('vender/:searchedCodeBar/:quantity')
+  venderProducto(
+    @Param('searchedCodeBar') searchedCodeBar: string,
+    @Param('quantity') quantity: string,
+  ) {
+    return this.productsService.venderProducto(searchedCodeBar, +quantity);
   }
 }
