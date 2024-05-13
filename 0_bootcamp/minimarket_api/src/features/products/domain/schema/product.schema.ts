@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { v4 } from 'uuid';
-import { ProductImage } from './product-image.schema';
 
 export type ProductDocument = Product & Document;
 
@@ -32,7 +31,7 @@ export class Product {
   @Prop({ required: true })
   discount: number;
   @Prop({ ref: 'ProductImage' })
-  images: ProductImage[];
+  images: string[];
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
