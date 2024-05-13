@@ -4,9 +4,9 @@ import { ProductsController } from './use-case/products.controller';
 import { ProductDatasourceImpl } from './infrastructure/product.datasource.impl';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Product, ProductSchema } from './domain/schema/product.schema';
-import { ProductImage } from './domain/domain';
 import { PaginationMiddleware } from 'src/config/common/pagination/pagination.middleware';
 import { EnvironmentConfigModule } from '../../config/config.module';
+import { SeedModule } from 'src/seed/seed.module';
 
 @Module({
   imports: [
@@ -19,16 +19,6 @@ import { EnvironmentConfigModule } from '../../config/config.module';
           ProductSchema.plugin(require('mongoose-autopopulate')),
       },
       {
-        name: ProductImage.name,
-        useFactory: () =>
-          ProductSchema.plugin(require('mongoose-autopopulate')),
-      },
-      // Import the ProductImage schema and apply the mongoose-paginate-v2 plugin
-      {
-        name: ProductImage.name,
-        useFactory: () => ProductSchema.plugin(require('mongoose-paginate-v2')),
-      },
-      {
         name: Product.name,
         useFactory: () => ProductSchema.plugin(require('mongoose-paginate-v2')),
       },
@@ -36,6 +26,7 @@ import { EnvironmentConfigModule } from '../../config/config.module';
   ],
   controllers: [ProductsController],
   providers: [ProductsService, ProductDatasourceImpl],
+  exports: [ProductsService, ProductDatasourceImpl],
 })
 export class ProductsModule {
   configure(consumer: MiddlewareConsumer){
