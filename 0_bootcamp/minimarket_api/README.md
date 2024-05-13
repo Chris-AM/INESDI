@@ -15,11 +15,22 @@ First Bootcamp project, Dockerizing a NondeJS (using NestJS) API with MongoDB.
 
 ```bash
 # Clone the repository
-$ git clone
+$ git clone https://github.com/Chris-AM/INESDI.git
+# Nav to the project folder
+$ cd 0_bootcamp/minimarket_api
+# Declare the .env file
+$ cp .env.template .env
+# Fill the .env file with your own data
 # Run Docker-compose
 $ docker-compose up -d
 # Install dependencies
 $ yarn install --frozen-lockfile
+# Run the app
+$ yarn run start:dev
+# Open Postman and test the API
+https://interstellar-spaceship-158766.postman.co/workspace/INESDI~dc093d60-ac4e-43d7-896a-04fb048e120b/collection/13178273-a81143a5-7094-4951-86f1-fd3d8ec5d283?action=share&creator=13178273
+# Open API documentation
+http://localhost:3000/api/documentation#/
 ```
 
 ## Running the app
@@ -35,7 +46,7 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Test
+<!-- ## Test
 
 ```bash
 # unit tests
@@ -46,4 +57,4 @@ $ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
-```
+``` -->
