@@ -24,3 +24,7 @@
 <img src="./assets/f1MR.png" />
 <img src="./assets/f1MRD.png" />
 <img src="./assets/f1MRM.png" />
+
+5. Mergear develop con main (master) y generar tag v1.0
+<img src="./assets/f1MRDD=>M.png" />
+<img src="./assets/f1MRMD=>M.png" />
