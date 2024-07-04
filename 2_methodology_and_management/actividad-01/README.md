@@ -28,3 +28,5 @@
 5. Mergear develop con main (master) y generar tag v1.0
 <img src="./assets/f1MRDD=>M.png" />
 <img src="./assets/f1MRMD=>M.png" />
+<img src="./assets/declare_first_tag.png" />
+<img src="./assets/first_tag.png" />
