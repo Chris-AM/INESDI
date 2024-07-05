@@ -1,3 +1,5 @@
+* Primera Parte: Creación de un proyecto en GitHub y uso de las ramas
+
 0. Creación del proyecto actividad-01 en Github: Como el repositorio de proyectos del máster ya se encuentra creado, se crea un directorio nuevo que tendrá los incrementos para la actividad 1.
 
 <img src="./assets/repopng.png"/>
@@ -30,3 +32,11 @@
 <img src="./assets/f1MRMD=>M.png" />
 <img src="./assets/declare_first_tag.png" />
 <img src="./assets/first_tag.png" />
+
+* Segunda Parte: Merge de dos ramas y posible resolución de conflictos
+
+6 y 7. Creación de la rama feature-2 y añadir la clase B. Creación de la rama feature-3 y añadir la clase C.
+
+<img src="./assets/feature-2.png" />
+
+![Alt text](image.png)
