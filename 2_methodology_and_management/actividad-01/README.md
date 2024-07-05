@@ -30,3 +30,12 @@
 <img src="./assets/f1MRMD=>M.png" />
 <img src="./assets/declare_first_tag.png" />
 <img src="./assets/first_tag.png" />
+
+* Segunda Parte: Merge de dos ramas y posible resolución de conflictos
+
+6 y 7. Creación de la rama feature-2 y añadir la clase B. Creación de la rama feature-3 y añadir la clase C.
+
+<img src="./assets/feature-2.png" />
+
+![Alt text](image.png)
+![Alt text](image-1.png)
