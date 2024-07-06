@@ -38,5 +38,21 @@
 6 y 7. Creación de la rama feature-2 y añadir la clase B. Creación de la rama feature-3 y añadir la clase C.
 
 <img src="./assets/feature-2.png" />
+<img src="./assets/feature-2-commit.png" />
 
-![Alt text](image.png)
+8 y 9. Mergear feature-2 y feature-3 con develop.
+
+![Alt text](assets/pre-double-mr.png)
+![Alt text](assets/f2-merged.png)
+![Alt text](assets/f3-confict.png)
+![Alt text](assets/f3-conflict-slvd.png)
+![Alt text](assets/f3-to-merge.png)
+
+10. Mergear develop con main y creación de la etiqueta v2.0.
+
+![Alt text](assets/dev-to-master.png)
+![Alt text](assets/tag-v2.png)
+
+11. Creación de rama hotfix-1 a partir de main y añadir un atributo lorem en clase A.
+
+12. Mergear rama hotfix-1 con main y creación de etiqueta v2.1
