@@ -61,3 +61,5 @@
 12. Mergear rama hotfix-1 con main y creación de etiqueta v2.1
 ![Alt text](image.png)
 ![Alt text](image-1.png)
+![Alt text](image-2.png)
+![Alt text](image-3.png)
