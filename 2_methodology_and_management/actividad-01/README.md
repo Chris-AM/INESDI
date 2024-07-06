@@ -55,4 +55,7 @@
 
 11. Creación de rama hotfix-1 a partir de main y añadir un atributo lorem en clase A.
 
+![Alt text](image.png)
+![Alt text](image.png)
+
 12. Mergear rama hotfix-1 con main y creación de etiqueta v2.1
