@@ -1,0 +1,52 @@
+body {
+  background: linear-gradient(to bottom, #131313, #112a43);
+}
+
+header {
+  background-image: url("../img/lp_band.png");
+}
+
+p {
+  color: rgb(123, 120, 120);
+}
+
+li {
+  color: rgb(127, 111, 111);
+}
+
+.wiki {
+  color: rgb(236, 141, 141);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.album-gallery {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-content {
+  background: linear-gradient(to bottom, #363333, #264564);
+}
+
+.card {
+  animation: fadeInUp 2s ease-in-out;
+  background: linear-gradient(to bottom, #363333, #264564);
+}
+
+.modal-title {
+  color: rgb(240, 240, 240);
+  font-weight: bold;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
