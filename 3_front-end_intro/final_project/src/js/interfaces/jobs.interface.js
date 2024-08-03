@@ -7,7 +7,10 @@ export const feDev1 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a frontend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    null,
+    '2 years',
+    'HTML, CSS, JavaScript'
 )
 
 export const feDev2 = new Job(
@@ -17,7 +20,10 @@ export const feDev2 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a frontend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '5000',
+    '3 years',
+    null
 )
 
 export const feDev3 = new Job(
@@ -27,7 +33,10 @@ export const feDev3 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a frontend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    null,
+    '4 years',
+    'HTML, CSS, JavaScript, React, Angular, Vue'
 )
 
 export const beDev1 = new Job(
@@ -37,7 +46,10 @@ export const beDev1 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a backend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    null,
+    '2 years',
+    'Node.js, Express, MongoDB'
 )
 
 export const beDev2 = new Job(
@@ -47,7 +59,10 @@ export const beDev2 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a backend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '5000',
+    '3 years',
+    'Node.js, Express, MongoDB, SQL, python, Java'
 )
 
 export const beDev3 = new Job(
@@ -57,7 +72,10 @@ export const beDev3 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a backend developer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    null,
+    '4 years',
+    'Node.js, Express, MongoDB, SQL, python, Java, C#'
 )
 
 export const devSecOp1 = new Job(
@@ -67,7 +85,10 @@ export const devSecOp1 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a DevSecOps engineer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '10000',
+    '2 years',
+    'Security, DevOps'
 )
 
 export const devSecOp2 = new Job(
@@ -77,7 +98,10 @@ export const devSecOp2 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a DevSecOps engineer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '15000',
+    '3 years',
+    'Security, DevOps, AWS, Azure'
 )
 
 export const devSecOp3 = new Job(
@@ -87,7 +111,10 @@ export const devSecOp3 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a DevSecOps engineer to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '20000',
+    '4 years',
+    'Security, DevOps, AWS, Azure, Kubernetes'
 )
 
 export const dba1 = new Job(
@@ -97,7 +124,10 @@ export const dba1 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a database administrator to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '10000',
+    '2 years',
+    'SQL, MySQL'
 )
 
 export const dba2 = new Job(
@@ -107,7 +137,10 @@ export const dba2 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a database administrator to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '15000',
+    '3 years',
+    'SQL, MySQL, Oracle, PostgreSQL'
 )
 
 export const dba3 = new Job(
@@ -117,6 +150,22 @@ export const dba3 = new Job(
     'Remote',
     'Full-time',
     'We are looking for a database administrator to join our team.',
-    'Please send your resume to our email address.'
+    'Please send your resume to our email address.',
+    '20000',
+    '4 years',
+    'SQL, MySQL, Oracle, PostgreSQL, MongoDB'
 )
-
+export const jobList = [
+    feDev1,
+    feDev2,
+    feDev3,
+    beDev1,
+    beDev2,
+    beDev3,
+    devSecOp1,
+    devSecOp2,
+    devSecOp3,
+    dba1,
+    dba2,
+    dba3
+];
