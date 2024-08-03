@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Poster Pro+</title>
+</head>
+
+<body>
+    <header>
+        <a href="https://www.seek.co.nz" target="_blank" rel="seek">
+            <h1>Job Poster Pro+</h1>
+        </a>
+
+        <ul>
+            <li>Job Seeker</li>
+            <li>profile</li>
+            <li>Career advice</li>
+            <li>Explore companies</li>
+        </ul>
+
+    </header>
+    <form action="src/pages/select-job.html" method="get">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <h4>select gender</h4>
+        <label for="male">male</label>
+        <input name="gender" type="radio" id="male" value="male" />
+        <label for="female">female</label>
+        <input name="gender" type="radio" id="female" value="female" />
+        <label for="other">other</label>
+        <input name="gender" type="radio" id="other" value="other" />
+        <br>
+        <label for="classification">Classification</label>
+        <select name="classification" id="classification" required>
+            <option value="front-end">Front End Developer</option>
+            <option value="hardware">Back End Developer</option>
+            <option value="devsecops">DevSecOps</option>
+            <option value="dba">Database Administrator</option>
+        </select>
+        <label for="job-type">Job Type</label>
+        <select name="job-type" id="jobType" required>
+            <option value="full-time">Full Time</option>
+            <option value="part-time">Part Time</option>
+            <option value="contract">Contract</option>
+            <option value="internship">Internship</option>
+        </select>
+        <br>
+        <label for="about">Tell us about yourself</label>
+        <textarea name="about" id="about" cols="30" rows="10" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+<script type="module" src="./src/js/index.js"></script>
+
+</html>
