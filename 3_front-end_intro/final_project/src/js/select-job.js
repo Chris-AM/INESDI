@@ -20,12 +20,16 @@ let jobs = [];
 switch (jobProfile) {
     case 'front-end':
         jobs = [feDev1, feDev2, feDev3];
+        break;
     case 'back-end':
         jobs = [beDev1, beDev2, beDev3];
+        break;
     case 'devsecops':
         jobs[devSecOp1, devSecOp2, devSecOp3];
+        break;
     default:
         jobs = [feDev1, devSecOp2, devSecOp3];
+        break;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
     `;
-    jobList.innerHTML += card;
+        jobList.innerHTML += card;
     });
 });
