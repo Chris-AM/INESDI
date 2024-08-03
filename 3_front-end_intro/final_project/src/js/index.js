@@ -1,4 +1,4 @@
-import { User } from './models/user.js'
+import { User } from './models/user.model.js'
 const form = document.querySelector('form');
 
 form.addEventListener('submit', async (event) => {
