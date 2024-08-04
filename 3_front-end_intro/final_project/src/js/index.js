@@ -4,12 +4,13 @@ const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
     const name = event.target.elements['name'].value;
     const email = event.target.elements['email'].value;
-    const gender = event.target.elements['gender'].value;
+    const disability = event.target.elements['disability'].value;
     const classification = event.target.elements['classification'].value;
     const jobType = event.target.elements['jobType'].value;
-    const about = event.target.elements['about'].value;
+    const searchedCountry = event.target.elements['searchedCountry'].value;
 
-    const user = new User(name, email, gender, classification, jobType, about);
+    const user = new User(name, email, disability, classification, jobType, searchedCountry);
+    console.log('user', user);
 
     localStorage.setItem('user', JSON.stringify(user));
 });

@@ -1,10 +1,10 @@
 export class User {
-    constructor(name, email, gender, classification, jobType, about) {
+    constructor(name, email, disability, classification, jobType, searchedCountry) {
         this.name = name;
         this.email = email;
-        this.gender = gender;
+        this.disability = disability;
         this.classification = classification;
         this.jobType = jobType;
-        this.about = about;
+        this.searchedCountry = searchedCountry;
     }
 }
