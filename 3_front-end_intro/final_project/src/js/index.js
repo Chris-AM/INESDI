@@ -10,7 +10,6 @@ form.addEventListener('submit', async (event) => {
     const searchedCountry = event.target.elements['searchedCountry'].value;
 
     const user = new User(name, email, disability, classification, jobType, searchedCountry);
-    console.log('user', user);
 
     localStorage.setItem('user', JSON.stringify(user));
 });
