@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.jobs-container,
+.job-info-container {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.jobs-container {
+  width: 50%;
+}
+
+.job-info-container {
+  width: 60%;
+  height: 40rem;
+  border-radius: 10px;
+}
+
+.card {
+  width: 90% !important;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.job-info-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(229, 232, 232);
+}
+
+.job-info span p {
+  display: inline;
+  font-size: 1.5rem;
+}
+
+.svg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .card {
+    width: 80% !important;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .job-info-container {
+    display: none;
+  }
+
+  .jobs-container {
+    width: 100%;
+  }
+
+  .card {
+    width: 100% !important;
+  }
+  
+}
+
+@media screen and (max-width: 992px) {
+  
+}
